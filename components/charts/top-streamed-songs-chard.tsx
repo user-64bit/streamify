@@ -10,29 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import Card from "../reusable/card";
-
-const data = [
-  {
-    name: "Midnight Rain",
-    streams: 1200000,
-  },
-  {
-    name: "As It Was",
-    streams: 982000,
-  },
-  {
-    name: "Anti-Hero",
-    streams: 875000,
-  },
-  {
-    name: "Unholy",
-    streams: 754000,
-  },
-  {
-    name: "Rich Flex",
-    streams: 698000,
-  },
-];
+import { TopSongsChartData } from "@/utils/config";
 
 export function TopSongsChart() {
   return (
@@ -41,7 +19,7 @@ export function TopSongsChart() {
         Top 5 Streamed Songs
       </h1>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
+        <BarChart data={TopSongsChartData}>
           <XAxis
             dataKey="name"
             stroke="#888888"

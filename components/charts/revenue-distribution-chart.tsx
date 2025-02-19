@@ -9,12 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import Card from "../reusable/card";
-
-const data = [
-  { name: "Subscriptions", value: 65 },
-  { name: "Advertisements", value: 25 },
-  { name: "Other", value: 10 },
-];
+import { RevenueDistributionChartData } from "@/utils/config";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
@@ -27,14 +22,14 @@ export function RevenueDistributionChart() {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
-            data={data}
+            data={RevenueDistributionChartData}
             cx="50%"
             cy="50%"
             innerRadius={70}
             outerRadius={130}
             dataKey="value"
           >
-            {data.map((entry, index) => (
+            {RevenueDistributionChartData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
