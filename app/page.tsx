@@ -2,12 +2,13 @@ import { RevenueDistributionChart } from "@/components/charts/revenue-distributi
 import { TopSongsChart } from "@/components/charts/top-streamed-songs-chard";
 import UserGrowthChart from "@/components/charts/user-growth-chart";
 import MetricsCard from "@/components/key-metric/metric-card";
+import RecentStream from "@/components/recent-stream";
 import { AudioLines, DollarSign, UserCheck, Users } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="lg:mx-32 mx-2">
-      <div className="flex flex-col lg:flex-row justify-around gap-4 pt-8">
+    <div className="lg:mx-32 mx-2 py-8">
+      <div className="flex flex-col lg:flex-row justify-around gap-4">
         <MetricsCard
           title="Total Users"
           value="100"
@@ -46,11 +47,12 @@ export default function Home() {
         imageWidth={420}
         className="rounded-3xl p-6 py-14 mt-14"
       />
-      <div className="flex justify-between gap-x-5 lg:flex-nowrap flex-wrap"> 
+      <div className="flex justify-between gap-x-5 lg:flex-nowrap flex-wrap">
         <UserGrowthChart />
         <RevenueDistributionChart />
         <TopSongsChart />
       </div>
+      <RecentStream />
     </div>
   );
 }
