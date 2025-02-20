@@ -13,8 +13,8 @@
 
 ## Dashboard Section:
 
+### Key metrics:
 
-###  Key metrics:
 - Card which shows
   - Total number of users
   - active users
@@ -30,12 +30,11 @@
   - Top 5 Streamed Songs
 
 ### Data Table:
+
 - table
- - song name
- - artist name
- - data streamed
- - stream count
- - user id
+- song name
+- artist name
+- data streamed
+- stream count
+- user id
 - sorting and filtering options
-
-

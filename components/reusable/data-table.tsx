@@ -32,7 +32,7 @@ export default function DataTable({
 
   const currentSongs = topStreamedSongs.slice(
     currentPage * songsPerPage,
-    (currentPage + 1) * songsPerPage
+    (currentPage + 1) * songsPerPage,
   );
 
   const handlePrevious = () => {
