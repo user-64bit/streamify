@@ -16,12 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TopStreamedSongInterface } from "@/utils/types";
-import {
-  ArrowLeft,
-  ArrowRight,
-  MoreHorizontal,
-  Play
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, MoreHorizontal, Play } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
