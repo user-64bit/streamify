@@ -24,7 +24,7 @@ export default function Home() {
         title="Top Artist"
         value="Billie Eilish"
         description="100 Million Streams"
-        imageUrl="/2.png"
+        imageUrl="/assets/images/billie.png"
         imageHeight={420}
         imageWidth={420}
         className="rounded-3xl p-6 py-14 mt-14"
