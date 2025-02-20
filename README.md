@@ -1,40 +1,25 @@
-### Todo
+# Streamify
 
-- Design Architecture for Streamify
-- Divide everything into different components
+Streamify is a web application that provides a user-friendly interface for streaming music. It prvoides Dashboards view
+to top streamed songs, recently streamed songs, and top artist, and also provides multiple charts to to analyze user growth on the platform, revenue generation and much more.
 
-## Design Architecture:
+## Features
 
-- A dashboard: Key metrics and Data Visualization
-  - user activity
-  - revenue
-  - content perfomance
-  - etc
+- Dashboards view to top streamed songs, recently streamed songs, and top artist, and also provides multiple charts to to analyze user growth on the platform, revenue generation and much more.
+- Easy-to-use dashboards for users to track their streaming progress.
+- Charts to analyze user growth on the platform, revenue generation and much more.
+- filter and sort options for users to find the songs they are interested in.
 
-## Dashboard Section:
+## Tech Stack
 
-### Key metrics:
+- Next.js
+- Tailwind CSS
+- Typescript
+- React
+- Recharts
 
-- Card which shows
-  - Total number of users
-  - active users
-  - total stream
-  - revenue
-  - Top artists
+## Installation
 
-### Data Visualization:
-
-- Charts (can be Pie Charts, Bar Charts, etc)
-  - User Growth Chart
-  - Revenue Distribution
-  - Top 5 Streamed Songs
-
-### Data Table:
-
-- table
-- song name
-- artist name
-- data streamed
-- stream count
-- user id
-- sorting and filtering options
+1. Clone the repository
+2. Install dependencies using `bun install`
+3. Run the application using `bun run dev`
