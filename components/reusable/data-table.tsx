@@ -21,7 +21,7 @@ export default function DataTable({
 }: {
   data: TopStreamedSongInterface;
 }) {
-  const { top_streamed_songs: topStreamedSongs, last_updated: lastUpdated } =
+  const { top_streamed_songs: topStreamedSongs } =
     data;
   return (
     <Table>
@@ -102,61 +102,3 @@ export default function DataTable({
     </Table>
   );
 }
-
-// <table className="w-full text-sm text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md overflow-hidden">
-//   <tbody>
-//     {topStreamedSongs.map(
-//       (
-//         {
-//           rank,
-//           song_id,
-//           title,
-//           artists,
-//           album,
-//           streams,
-//           duration,
-//           release_date,
-//           genre,
-//           cover_image_url,
-//           artist_handle,
-//         },
-//         index
-//       ) => (
-//         <tr
-//           key={index}
-//           className={`transition-all hover:bg-gray-100 dark:hover:bg-gray-700`}
-//         >
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700 w-32 h-32">
-//             <Image
-//               src={cover_image_url}
-//               alt="cover_image_url"
-//               width={80}
-//               height={80}
-//             />
-//           </td>
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700 border">
-//             <h4 className="text-lg font-bold">{title}</h4>
-//             {artists.map((artist, i) => (
-//               <span key={i} className="text-xs hover:underline">
-//                 {artist} {i < artists.length - 1 && ", "}
-//               </span>
-//             ))}
-//           </td>
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-//             <span className="">{streams}</span>{" "}
-//             <ChartNoAxesCombined className="w-5 h-5 text-green-400 inline-block" />
-//           </td>
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-//             {duration}
-//           </td>
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-//             {release_date}
-//           </td>
-//           <td className="p-4 border-b border-gray-200 dark:border-gray-700">
-//             {genre}
-//           </td>
-//         </tr>
-//       )
-//     )}
-//   </tbody>
-// </table>

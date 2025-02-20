@@ -95,7 +95,7 @@ export const recentStreamData = {
       artist_handle: "@Billie",
     },
   ],
-  last_updated: "2025-02-20T14:00:00Z",
+  last_updated: "2025-02-19T14:00:00Z",
 };
 
 export const TopSongsChartData = [
