@@ -23,9 +23,11 @@ import {
   ChevronDown,
   MoreHorizontal,
   Play,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Badge } from "../ui/badge";
 
 export default function DataTable({
   data,
@@ -38,7 +40,10 @@ export default function DataTable({
   const [currentSongs, setCurrentSongs] = useState(
     topStreamedSongs.slice(0, 5),
   );
+  const [sortedBy, setSortedBy] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [currentPage, setCurrentPage] = useState(0);
+  const [filteredBy, setFilteredBy] = useState("");
   const songsPerPage = 5;
   const totalPages = Math.ceil(topStreamedSongs.length / songsPerPage);
 
@@ -52,18 +57,36 @@ export default function DataTable({
   }, [topStreamedSongs, currentPage]);
 
   const handleSort = (sortBy: string) => {
-    const sortedSongs = [...topStreamedSongs].sort((a, b) => {
-      if (sortBy === "title") {
-        return a.title.localeCompare(b.title);
-      } else if (sortBy === "album") {
-        return a.album.localeCompare(b.album);
-      } else if (sortBy === "streams") {
-        return b.streams - a.streams;
-      }
-      return 0;
-    });
+    const sortedSongs = [...topStreamedSongs];
+
+    if (sortedBy === sortBy) {
+      sortedSongs.reverse();
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      sortedSongs.sort((a, b) => {
+        if (sortBy === "title") {
+          return a.title.localeCompare(b.title);
+        } else if (sortBy === "album") {
+          return a.album.localeCompare(b.album);
+        } else if (sortBy === "streams") {
+          return b.streams - a.streams;
+        }
+        return 0;
+      });
+      setSortOrder("asc");
+    }
 
     setTopStreamedSongs(sortedSongs);
+    setSortedBy(sortBy);
+    setCurrentPage(0);
+  };
+
+  const filterSongs = (artist: string) => {
+    const filteredSongs = data.top_streamed_songs.filter((song) =>
+      song.artists.includes(artist),
+    );
+    setTopStreamedSongs(filteredSongs);
+    setFilteredBy(artist);
     setCurrentPage(0);
   };
 
@@ -76,30 +99,70 @@ export default function DataTable({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 mt-4">
+      {filteredBy !== "" && (
+        <Badge className="bg-blue-400/30 hover:bg-blue-400/10 rounded-full">
+          <span className="text-xs">{filteredBy}</span>
+          <X
+            className="h-4 w-4"
+            onClick={() => {
+              setFilteredBy("");
+              setTopStreamedSongs(data.top_streamed_songs);
+              setCurrentPage(0);
+            }}
+          />
+        </Badge>
+      )}
       <div className="relative">
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-white/10">
+            <TableRow className="hover:bg-white/10 border-slate-200/10">
               <TableHead>#</TableHead>
               <TableHead
-                className="hover:text-white"
+                className="hover:text-white cursor-pointer"
                 onClick={() => handleSort("title")}
               >
                 Song
-                <ChevronDown className="w-5 h-5 inline-block" />
+                <ChevronDown
+                  className={`w-5 h-5 inline-block transition-transform ${
+                    sortedBy === "title"
+                      ? sortOrder === "asc"
+                        ? "rotate-180"
+                        : ""
+                      : ""
+                  }`}
+                />
               </TableHead>
               <TableHead
-                className="hidden md:table-cell hover:text-white"
+                className="hidden md:table-cell hover:text-white cursor-pointer"
                 onClick={() => handleSort("album")}
               >
-                Album <ChevronDown className="w-5 h-5 inline-block" />
+                Album
+                <ChevronDown
+                  className={`w-5 h-5 inline-block transition-transform ${
+                    sortedBy === "album"
+                      ? sortOrder === "asc"
+                        ? "rotate-180"
+                        : ""
+                      : ""
+                  }`}
+                />
               </TableHead>
+
               <TableHead
-                className="text-right hover:text-white"
+                className="text-right hover:text-white cursor-pointer"
                 onClick={() => handleSort("streams")}
               >
-                Streams <ChevronDown className="w-5 h-5 inline-block" />
+                Streams
+                <ChevronDown
+                  className={`w-5 h-5 inline-block transition-transform ${
+                    sortedBy === "streams"
+                      ? sortOrder === "asc"
+                        ? "rotate-180"
+                        : ""
+                      : ""
+                  }`}
+                />
               </TableHead>
               <TableHead className="w-[50px]"></TableHead>
             </TableRow>
@@ -116,7 +179,7 @@ export default function DataTable({
               }) => (
                 <TableRow
                   key={song_id}
-                  className="group hover:bg-white/10 cursor-pointer"
+                  className="group hover:bg-white/10 cursor-pointer border-slate-200/10"
                 >
                   <TableCell className="h-10 w-10">
                     <div className="relative h-10 w-10 flex-none">
@@ -136,9 +199,17 @@ export default function DataTable({
                       <span className="font-medium leading-none text-white text-sm">
                         {title}
                       </span>
-                      <span className="text-xs hover:underline text-white">
-                        {artists.join(", ")}
-                      </span>
+                      <div>
+                        {artists.map((artist, i) => (
+                          <span
+                            key={artist}
+                            onClick={() => filterSongs(artist)}
+                            className="text-xs hover:underline text-white"
+                          >
+                            {artist} {i < artists.length - 1 && ", "}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </TableCell>
                   <TableCell className="hidden md:table-cell text-white">
