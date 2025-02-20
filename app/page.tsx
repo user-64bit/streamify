@@ -5,10 +5,21 @@ import MetricsCard from "@/components/key-metric/metric-card";
 import TopArtistCard from "@/components/key-metric/top-artist";
 import RecentStream from "@/components/recent-stream";
 import { metricsCardData } from "@/utils/config";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="lg:mx-12 mx-4 py-8 max-w-full">
+      <div className="flex gap-x-3 items-center mb-4">
+        <Image
+          src={"/logo.png"}
+          width={60}
+          height={60}
+          alt="Logo"
+          className="hover:animate-spin hover:cursor-pointer transition-all duration-300"
+        />
+        <h3 className="text-2xl font-bold">Streamify</h3>
+      </div>
       <div className="flex flex-col lg:flex-row justify-around gap-4">
         {metricsCardData.map((metric, i) => (
           <MetricsCard
@@ -23,8 +34,8 @@ export default function Home() {
       </div>
       <TopArtistCard
         title="Top Artist"
-        value="Billie Eilish"
-        description="100 Million Streams"
+        name="Billie Eilish"
+        description="is the most-streamed artist on Spotify. She is the first female artist to top the list. with 10+ Billions streamings."
         imageUrl="/assets/images/billie.png"
         imageHeight={500}
         imageWidth={500}

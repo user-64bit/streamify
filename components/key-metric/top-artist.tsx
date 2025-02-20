@@ -6,22 +6,20 @@ import { motion } from "framer-motion";
 
 export default function TopArtistCard({
   title,
-  value,
+  name,
   description,
   imageUrl,
   imageWidth = 100,
   imageHeight = 100,
   className,
-  icon,
 }: {
   title: string;
-  value: string;
+  name: string;
   description: string;
   imageUrl?: string;
   imageWidth?: number;
   imageHeight?: number;
   className?: string;
-  icon?: any;
 }) {
   return (
     <motion.div
@@ -39,24 +37,27 @@ export default function TopArtistCard({
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-              className="absolute z-10 -top-24 right-2"
+              className="absolute z-10 -top-24 -right-8"
             >
               <Image
                 src={imageUrl}
                 alt="corner image"
                 width={imageWidth}
                 height={imageHeight}
-                className="object-cover hover:scale-110 transition-all duration-300 ease-in-out"
+                className="object-cover hover:scale-105 transition-all duration-300 ease-in-out"
               />
             </motion.div>
           )}
-          <div className="flex flex-col text-start px-2 space-y-2 text-white">
-            <div className="flex justify-between">
-              <h1 className="text-lg font-bold">{title}</h1>
-              {icon}
-            </div>
-            <h1 className="text-4xl font-bold">{value}</h1>
-            <p className="text-xs">{description}</p>
+          <div className="flex flex-col space-y-2 justify-between text-start px-2 text-white">
+            <h1 className="text-lg font-bold">{title}</h1>
+            <h1 className="text-4xl font-bold">{name}</h1>
+            <p className="text-sm">{description}</p>
+            <Image
+              src={"/music-sounds.gif"}
+              width={600}
+              height={600}
+              alt="hello"
+            />
           </div>
         </div>
         <div className="lg:hidden block">
@@ -77,11 +78,8 @@ export default function TopArtistCard({
               </motion.div>
             )}
             <div className="flex flex-col items-center text-start px-2 space-y-2 text-white sm:pt-40 pt-28 w-full">
-              <div className="flex justify-between">
-                <h1 className="text-lg font-bold">{title}</h1>
-                {icon}
-              </div>
-              <h1 className="text-4xl font-bold">{value}</h1>
+              <h1 className="text-lg font-bold">{title}</h1>
+              <h1 className="text-4xl font-bold">{name}</h1>
               <p className="text-xs">{description}</p>
             </div>
           </div>
