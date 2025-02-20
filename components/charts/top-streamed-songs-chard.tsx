@@ -14,7 +14,7 @@ import { TopSongsChartData } from "@/utils/config";
 
 export function TopSongsChart() {
   return (
-    <Card className="mt-14 h-[400px]">
+    <Card className="mt-14 max-h-[450px]">
       <h1 className="text-lg font-bold text-white mb-4 text-center">
         Top 5 Streamed Songs
       </h1>

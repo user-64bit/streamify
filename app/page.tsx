@@ -32,9 +32,11 @@ export default function Home() {
       <div className="flex justify-between gap-x-5 lg:flex-nowrap flex-wrap">
         <UserGrowthChart />
         <RevenueDistributionChart />
-        <TopSongsChart />
       </div>
-      <RecentStream />
+      <div className="flex justify-between gap-x-5 lg:flex-nowrap flex-wrap">
+        <TopSongsChart />
+        <RecentStream />
+      </div>
     </div>
   );
 }
