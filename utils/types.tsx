@@ -5,7 +5,7 @@ export interface TopStreamedSongInterface {
     title: string;
     artists: string[];
     album: string;
-    streams: string;
+    streams: number;
     duration: null;
     release_date: string;
     genre: string;
