@@ -7,7 +7,7 @@ import { metricsCardData } from "@/utils/config";
 
 export default function Home() {
   return (
-    <div className="lg:mx-32 mx-2 py-8">
+    <div className="lg:mx-12 mx-4 py-8">
       <div className="flex flex-col lg:flex-row justify-around gap-4">
         {metricsCardData.map((metric, i) => (
           <MetricsCard

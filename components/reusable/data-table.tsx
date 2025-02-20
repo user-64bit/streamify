@@ -213,7 +213,7 @@ export default function DataTable({
                     </div>
                   </TableCell>
                   <TableCell className="hidden md:table-cell text-white">
-                    {album}
+                    {album.length > 20 ? album.slice(0, 20) + "..." : album}
                   </TableCell>
                   <TableCell className="text-right text-white">
                     {formatNumber(streams)}

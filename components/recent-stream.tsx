@@ -17,7 +17,7 @@ export default function RecentStream() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="w-full space-y-4"
     >
-      <Card className="mt-14 max-h-[450px] h-[450px]">
+      <Card className="mt-14 max-h-[500px] h-[500px]">
         <div className="flex justify-between items-center">
           <div></div>
           <h1 className="text-lg font-bold text-white pl-10">Recent Streams</h1>
